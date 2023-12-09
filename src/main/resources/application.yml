@@ -1,0 +1,18 @@
+server:
+      port: 8989
+      
+spring:
+    cloud:
+     gateway:
+       routes:
+        - id: loginMicroservice
+          uri: http://localhost:9001/
+          predicates:
+           - Path= /ecommerce/login/** 
+           
+        - id: orderMicroservice
+          uri: http://localhost:9002/
+          predicates:
+           - Path= /ecommerce/order/**  
+    application:
+       name: API_GATEWAY
